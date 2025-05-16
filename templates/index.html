@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Проекты</h2>
+
+<a href="{{ url_for('add_project') }}" class="btn btn-primary mb-4">Добавить проект</a>
+
+<!-- Форма поиска -->
+<input type="text" id="search" placeholder="Поиск по названию..." class="form-control mb-4">
+
+<!-- Контейнер для списка проектов -->
+<div id="projects-container" class="row">
+    {% for project in projects %}
+        {% include "project_card.html" %}
+    {% endfor %}
+</div>
+
+<script>
+document.getElementById("search").addEventListener("input", function () {
+    const query = this.value;
+    fetch(`/search?q=${encodeURIComponent(query)}`)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById("projects-container").innerHTML = html;
+        });
+});
+</script>
+{% endblock %}

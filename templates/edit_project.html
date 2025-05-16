@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать проект</title>
+</head>
+<body>
+    <h1>Редактировать проект</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Название:</label><br>
+        <input type="text" name="title" value="{{ project.title }}"><br><br>
+
+        <label>Описание:</label><br>
+        <textarea name="description">{{ project.description }}</textarea><br><br>
+
+        <label>URL изображения:</label><br>
+        <input type="text" name="image_url" value="{{ project.image_url }}"><br><br>
+
+        <label>Загрузить изображение:</label><br>
+        <input type="file" name="image_file"><br><br>
+
+        <button type="submit">Сохранить</button>
+        <a href="{{ url_for('home') }}">Отмена</a>
+    </form>
+</body>
+</html>

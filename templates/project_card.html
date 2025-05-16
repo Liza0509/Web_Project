@@ -1,0 +1,42 @@
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card h-100">
+        {% if project.image_filename %}
+        <img src="{{ url_for('static', filename='uploads/' ~ project.image_filename) }}" class="card-img-top"
+             alt="{{ project.title }}">
+        {% elif project.image_url %}
+        <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}">
+        {% else %}
+        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Нет изображения">
+        {% endif %}
+        <div class="card-body">
+            <form action="{{ url_for('like_project', project_id=project.id) }}" method="POST" style="display: inline;">
+                {% set liked = project.likes | selectattr("user_id", "equalto", session['user_id']) | list | first %}
+
+                <button type="submit" class="btn btn-sm {{ 'btn-danger' if liked else 'btn-outline-danger' }}">
+                    ❤️ {{ project.likes | length }}
+                </button>
+            </form>
+
+
+            <h5 class="card-title">
+                <a href="{{ url_for('project_detail', project_id=project.id) }}">
+                    {{ project.title }}
+                </a>
+            </h5>
+            <p class="card-text">{{ project.description }}</p>
+
+            <p class="text-muted mb-1">
+                Автор: {{ project.user.username }}<br>
+                Добавлено: {{ project.created_at.strftime('%d.%m.%Y %H:%M') }}
+            </p>
+
+            <a href="{{ url_for('edit_project', project_id=project.id) }}" class="btn btn-warning">Редактировать</a>
+            <form action="{{ url_for('delete_project', project_id=project.id) }}" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Вы уверены, что хотите удалить проект?')">Удалить
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>

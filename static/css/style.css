@@ -1,0 +1,68 @@
+/* static/css/style.css */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f7f9fc; /* светлый пастельный фон */
+    color: #444;
+}
+
+/* Навбар */
+nav.navbar {
+    background-color: #a59bde !important; /* нежный сиреневый */
+    box-shadow: 0 4px 8px rgba(165, 155, 222, 0.3);
+}
+nav.navbar .navbar-brand,
+nav.navbar .nav-link {
+    color: #f9f9f9 !important;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+nav.navbar .nav-link:hover {
+    color: #dcd6f7 !important;
+}
+
+/* Контейнер */
+.container.mt-4 {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+/* Сообщения */
+.alert {
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: #7c5ac8;
+    border-radius: 12px;
+    border: none;
+    transition: background-color 0.3s ease;
+    font-weight: 700;
+}
+.btn-primary:hover {
+    background-color: #5e44a5;
+}
+.btn-secondary {
+    background-color: #c9c9f2;
+    color: #444;
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+}
+.btn-secondary:hover {
+    background-color: #aaa9d9;
+    color: #222;
+}
+
+/* Ссылки */
+a {
+    color: #7c5ac8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #5e44a5;
+    text-decoration: underline;
+}
